@@ -31,6 +31,6 @@
 18. [Type erasure паттерн](https://github.com/letstatt/cpp-notes/blob/main/18.%20type%20erasure%20pattern.md)
 19. [Проблемы с многопоточностью](https://github.com/letstatt/cpp-notes/blob/main/19.%20threading%20problems.md)
 20. [std::atomic, memory_order](https://github.com/letstatt/cpp-notes/blob/main/20.%20atomics%2C%20memory%20order.md)
-21. [Ключевое слово volatile](https://github.com/letstatt/cpp-notes/blob/main/21.%20volatile.md)
+21. [Спецификатор volatile](https://github.com/letstatt/cpp-notes/blob/main/21.%20volatile.md)
 22. [std::promise, std::future, std::async](https://github.com/letstatt/cpp-notes/blob/main/22.%20promise%2C%20future%2C%20async.md)
 23. [Корутины](https://github.com/letstatt/cpp-notes/blob/main/23.%20coroutines.md)
