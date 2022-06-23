@@ -24,7 +24,7 @@
 11. [Variadic templates](https://github.com/letstatt/cpp-notes/blob/main/11.%20variadic%20templates.md)
 12. [Исключения, noexcept](https://github.com/letstatt/cpp-notes/blob/main/12.%20exceptions%2C%20noexcept.md)
 13. [constexpr, consteval, if](https://github.com/letstatt/cpp-notes/blob/main/13.%20constexpr%2C%20consteval%2C%20if.md)
-14. [type_traits, SFINAE](https://github.com/letstatt/cpp-notes/blob/main/14.%20type_traits%2C%20SFINAE.md)
+14. [SFINAE](https://github.com/letstatt/cpp-notes/blob/main/14.%20SFINAE.md)
 15. [decltype, declval, auto](https://github.com/letstatt/cpp-notes/blob/main/14.%20decltype%2C%20declval%2C%20auto.md)
 16. [RAII, умные указатели](https://github.com/letstatt/cpp-notes/blob/main/15.%20RAII%2C%20smart%20pointers.md)
 17. [RVO, NRVO, LTO](https://github.com/letstatt/cpp-notes/blob/main/16.%20RVO%2C%20NRVO%2C%20LTO.md)
