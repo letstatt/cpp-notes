@@ -4,8 +4,6 @@
 
 Дело в том, что он весьма богат и многогранен, поэтому держать всю теорию в голове невозможно. Иногда хочется освежить знания, например, перед собеседованием.
 
-Конечно, можно читать CppReference, но мне парсить английский налету сложно, а в остальных источниках я не вижу того, что мне порой нужно - либо слишком мало, либо слишком много, либо плохо структурировано.
-
 Эти заметки пишутся не в виде учебника - предполагается, что читатель уже что-то знает. Могут быть ошибки, можно контрибьютить.
 
 
@@ -24,14 +22,14 @@
 11. [Variadic templates](https://github.com/letstatt/cpp-notes/blob/main/11.%20variadic%20templates.md)
 12. [Исключения, noexcept](https://github.com/letstatt/cpp-notes/blob/main/12.%20exceptions%2C%20noexcept.md)
 13. [constexpr, consteval, if](https://github.com/letstatt/cpp-notes/blob/main/13.%20constexpr%2C%20consteval%2C%20if.md)
-14. [SFINAE](https://github.com/letstatt/cpp-notes/blob/main/14.%20SFINAE.md)
-15. [decltype, declval, auto](https://github.com/letstatt/cpp-notes/blob/main/14.%20decltype%2C%20declval%2C%20auto.md)
-16. [RAII, умные указатели](https://github.com/letstatt/cpp-notes/blob/main/15.%20RAII%2C%20smart%20pointers.md)
-17. [RVO, NRVO, LTO](https://github.com/letstatt/cpp-notes/blob/main/16.%20RVO%2C%20NRVO%2C%20LTO.md)
-18. [Лямбда-функции](https://github.com/letstatt/cpp-notes/blob/main/17.%20lambda.md)
-19. [Type erasure паттерн](https://github.com/letstatt/cpp-notes/blob/main/18.%20type%20erasure%20pattern.md)
-20. [Проблемы с многопоточностью](https://github.com/letstatt/cpp-notes/blob/main/19.%20threading%20problems.md)
-21. [std::atomic, memory_order](https://github.com/letstatt/cpp-notes/blob/main/20.%20atomics%2C%20memory%20order.md)
-22. [Спецификатор volatile](https://github.com/letstatt/cpp-notes/blob/main/21.%20volatile.md)
-23. [std::promise, std::future, std::async](https://github.com/letstatt/cpp-notes/blob/main/22.%20promise%2C%20future%2C%20async.md)
-24. [Корутины](https://github.com/letstatt/cpp-notes/blob/main/23.%20coroutines.md)
+14. [decltype, declval, auto](https://github.com/letstatt/cpp-notes/blob/main/14.%20decltype%2C%20declval%2C%20auto.md)
+15. [SFINAE](https://github.com/letstatt/cpp-notes/blob/main/15.%20SFINAE.md)
+16. [RAII, умные указатели](https://github.com/letstatt/cpp-notes/blob/main/16.%20RAII%2C%20smart%20pointers.md)
+17. [RVO, NRVO, LTO](https://github.com/letstatt/cpp-notes/blob/main/17.%20RVO%2C%20NRVO%2C%20LTO.md)
+18. [Лямбда-функции](https://github.com/letstatt/cpp-notes/blob/main/18.%20lambda.md)
+19. [Type erasure паттерн](https://github.com/letstatt/cpp-notes/blob/main/19.%20type%20erasure%20pattern.md)
+20. [Проблемы с многопоточностью](https://github.com/letstatt/cpp-notes/blob/main/20.%20threading%20problems.md)
+21. [std::atomic, memory_order](https://github.com/letstatt/cpp-notes/blob/main/21.%20atomics%2C%20memory%20order.md)
+22. [Спецификатор volatile](https://github.com/letstatt/cpp-notes/blob/main/22.%20volatile.md)
+23. [std::promise, std::future, std::async](https://github.com/letstatt/cpp-notes/blob/main/23.%20promise%2C%20future%2C%20async.md)
+24. [Корутины](https://github.com/letstatt/cpp-notes/blob/main/24.%20coroutines.md)
