@@ -25,7 +25,7 @@
 14. [decltype, declval, auto](https://github.com/letstatt/cpp-notes/blob/main/14.%20decltype%2C%20declval%2C%20auto.md)
 15. [SFINAE](https://github.com/letstatt/cpp-notes/blob/main/15.%20SFINAE.md)
 16. [RAII, умные указатели](https://github.com/letstatt/cpp-notes/blob/main/16.%20RAII%2C%20smart%20pointers.md)
-17. [RVO, NRVO, LTO](https://github.com/letstatt/cpp-notes/blob/main/17.%20RVO%2C%20NRVO%2C%20LTO.md)
+17. [RVO, NRVO, LTO](https://github.com/letstatt/cpp-notes/blob/main/17.%20EBO%2C%20RVO%2C%20PGO%2C%20LTO.md)
 18. [Лямбда-функции](https://github.com/letstatt/cpp-notes/blob/main/18.%20lambda.md)
 19. [Type erasure паттерн](https://github.com/letstatt/cpp-notes/blob/main/19.%20type%20erasure%20pattern.md)
 20. [Проблемы с многопоточностью](https://github.com/letstatt/cpp-notes/blob/main/20.%20threading%20problems.md)
