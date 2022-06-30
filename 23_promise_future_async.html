@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>std::promise, std::future, std::async</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="01_object.html"><strong aria-hidden="true">1.</strong> Объект</a></li><li class="chapter-item expanded "><a href="02_alignment.html"><strong aria-hidden="true">2.</strong> Выравнивание</a></li><li class="chapter-item expanded "><a href="03_storage_duration.html"><strong aria-hidden="true">3.</strong> Типы размещения</a></li><li class="chapter-item expanded "><a href="04_namespaces_aliases_adl.html"><strong aria-hidden="true">4.</strong> Пространства имен, алиасы, ADL</a></li><li class="chapter-item expanded "><a href="05_inline_ODR_linkage.html"><strong aria-hidden="true">5.</strong> Inline, ODR и связывание</a></li><li class="chapter-item expanded "><a href="06_refs_and_pointers.html"><strong aria-hidden="true">6.</strong> Ссылки и указатели</a></li><li class="chapter-item expanded "><a href="07_value_categories_move.html"><strong aria-hidden="true">7.</strong> Категории значений, move-семантика</a></li><li class="chapter-item expanded "><a href="08_references_forward.html"><strong aria-hidden="true">8.</strong> Ссылки и std::forward</a></li><li class="chapter-item expanded "><a href="09_inheritance_virtual_cast.html"><strong aria-hidden="true">9.</strong> Наследование, virtual, приведение типов</a></li><li class="chapter-item expanded "><a href="10_templates.html"><strong aria-hidden="true">10.</strong> Шаблоны</a></li><li class="chapter-item expanded "><a href="11_variadic_templates.html"><strong aria-hidden="true">11.</strong> Variadic templates</a></li><li class="chapter-item expanded "><a href="12_exceptions_noexcept.html"><strong aria-hidden="true">12.</strong> Исключения, noexcept</a></li><li class="chapter-item expanded "><a href="13_constexpr_consteval_if.html"><strong aria-hidden="true">13.</strong> constexpr, consteval, if</a></li><li class="chapter-item expanded "><a href="14_decltype_declval_auto.html"><strong aria-hidden="true">14.</strong> decltype, declval, auto</a></li><li class="chapter-item expanded "><a href="15_SFINAE.html"><strong aria-hidden="true">15.</strong> SFINAE</a></li><li class="chapter-item expanded "><a href="16_RAII_smart_pointers.html"><strong aria-hidden="true">16.</strong> RAII, умные указатели</a></li><li class="chapter-item expanded "><a href="17_EBO_RVO_PGO_LTO.html"><strong aria-hidden="true">17.</strong> EBO, RVO, PGO, LTO</a></li><li class="chapter-item expanded "><a href="18_lambda.html"><strong aria-hidden="true">18.</strong> Лямбда-функции</a></li><li class="chapter-item expanded "><a href="19_type_erasure_pattern.html"><strong aria-hidden="true">19.</strong> Type-erasure паттерн</a></li><li class="chapter-item expanded "><a href="20_threading_problems.html"><strong aria-hidden="true">20.</strong> Проблемы с многопоточностью</a></li><li class="chapter-item expanded "><a href="21_atomics_memory_order.html"><strong aria-hidden="true">21.</strong> std::atomic, memory order</a></li><li class="chapter-item expanded "><a href="22_volatile.html"><strong aria-hidden="true">22.</strong> Квалификатор volatile</a></li><li class="chapter-item expanded "><a href="23_promise_future_async.html" class="active"><strong aria-hidden="true">23.</strong> std::promise, std::future, std::async</a></li><li class="chapter-item expanded "><a href="24_coroutines.html"><strong aria-hidden="true">24.</strong> Корутины</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="Примеры-использования-promise-и-future"><a class="header" href="#Примеры-использования-promise-и-future">Примеры использования promise и future</a></h2>
+<pre><code class="language-cpp">// Create a promise
+std::promise&lt;int&gt; promise;
+
+// And get its future
+std::future&lt;int&gt; future = promise.get_future();
+
+// You can also get a shared future this way, by the way! (Choose one please)
+std::shared_future&lt;int&gt; shared_future = promise.get_future();
+
+// Now suppose we passed promise to a separate thread.
+// And in the main thread we call...
+int val = future.get(); // This will block!
+
+// Until, that is, we set the future's value via the promise
+promise.set_value(10); // In the separate thread
+
+// So now in the main thread, if we try to access val...
+std::cout &lt;&lt; val &lt;&lt; std::endl;
+
+// Output: 10
+</code></pre>
+<p>Из заметки про атомики здесь заметна семантика <code>release</code>/<code>acquire</code>. Так и будет - все изменения, сделанные потоком, записавшим в <code>promise</code> значение, будут видны потоку, который прочитал <code>future</code>.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;future&gt;
+ 
+void initiazer(std::promise&lt;int&gt; *promObj) {
+    std::cout &lt;&lt; &quot;Inside Thread&quot; &lt;&lt; std::endl;
+    promObj-&gt;set_value(35);
+}
+ 
+int main() {
+    std::promise&lt;int&gt; promiseObj;
+    std::future&lt;int&gt; futureObj = promiseObj.get_future();
+    std::thread th(initiazer, &amp;promiseObj);
+    std::cout &lt;&lt; futureObj.get() &lt;&lt; std::endl;
+    th.join();
+    return 0;
+}
+</code></pre>
+<h2 id="stdasync"><a class="header" href="#stdasync">std::async</a></h2>
+<p>Наипростейший способ использовать <code>async</code> - это просто передать callback-функцию как аргумент и дать системе сделать все за тебя.</p>
+<pre><code class="language-cpp">auto future = std::async(some_function, arg_1, arg_2);
+</code></pre>
+<p>Стоит отметить, что <code>async</code> поддерживает параллелизм, но конструктор по умолчанию может не запускать переданные функции в отдельном потоке. Для того, чтобы функция точно выполнилась в отдельном потоке, необходимо явно сказать <code>async</code> об этом.</p>
+<p>Also, since Linux threads run sequentially by default, it's especially important to force the functions to run in separate threads. We'll see how to do that later.</p>
+<h3 id="Политики-запуска-stdasync"><a class="header" href="#Политики-запуска-stdasync">Политики запуска std::async</a></h3>
+<p>Есть три способа запустить асинхронную задачу:</p>
+<ul>
+<li><code>std::launch::async</code> - гарантирует запуск в отдельном потоке</li>
+<li><code>std::launch::deferred</code> - функция будет вызвана только при вызове <code>get()</code></li>
+<li><code>std::launch::async | std::launch::deferred</code> - поведение по умолчанию, отдать на откуп системе.</li>
+</ul>
+<p>Запуск задачи будет выглядеть так:</p>
+<pre><code class="language-cpp">auto future = std::async(std::launch::async, some_function, arg_1, arg_2);
+</code></pre>
+<p>Еще примеры:</p>
+<pre><code class="language-cpp">// Pass in function pointer
+auto future = std::async(std::launch::async, some_function, arg_1, arg_2);
+
+// Pass in function reference
+auto future = std::async(std::launch::async, &amp;some_function, arg_1, arg_2);
+
+// Pass in function object
+struct SomeFunctionObject {
+    void operator() (int arg_1) {}
+};
+
+auto future = std::async(std::launch::async, SomeFunctionObject(), arg_1);
+
+// Lambda function
+auto future = std::async(std::launch::async, [](){});
+</code></pre>
+<hr />
+<p>Заимствования:</p>
+<p><a href="https://github.com/methylDragon/coding-notes/blob/master/C%2B%2B/07%20C%2B%2B%20-%20Threading%20and%20Concurrency.md">coding-notes/07 C++ - Threading and Concurrency.md at master · methylDragon/coding-notes (github.com)</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="22_volatile.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="24_coroutines.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="22_volatile.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="24_coroutines.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

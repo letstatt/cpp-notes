@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>RAII, умные указатели</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="01_object.html"><strong aria-hidden="true">1.</strong> Объект</a></li><li class="chapter-item expanded "><a href="02_alignment.html"><strong aria-hidden="true">2.</strong> Выравнивание</a></li><li class="chapter-item expanded "><a href="03_storage_duration.html"><strong aria-hidden="true">3.</strong> Типы размещения</a></li><li class="chapter-item expanded "><a href="04_namespaces_aliases_adl.html"><strong aria-hidden="true">4.</strong> Пространства имен, алиасы, ADL</a></li><li class="chapter-item expanded "><a href="05_inline_ODR_linkage.html"><strong aria-hidden="true">5.</strong> Inline, ODR и связывание</a></li><li class="chapter-item expanded "><a href="06_refs_and_pointers.html"><strong aria-hidden="true">6.</strong> Ссылки и указатели</a></li><li class="chapter-item expanded "><a href="07_value_categories_move.html"><strong aria-hidden="true">7.</strong> Категории значений, move-семантика</a></li><li class="chapter-item expanded "><a href="08_references_forward.html"><strong aria-hidden="true">8.</strong> Ссылки и std::forward</a></li><li class="chapter-item expanded "><a href="09_inheritance_virtual_cast.html"><strong aria-hidden="true">9.</strong> Наследование, virtual, приведение типов</a></li><li class="chapter-item expanded "><a href="10_templates.html"><strong aria-hidden="true">10.</strong> Шаблоны</a></li><li class="chapter-item expanded "><a href="11_variadic_templates.html"><strong aria-hidden="true">11.</strong> Variadic templates</a></li><li class="chapter-item expanded "><a href="12_exceptions_noexcept.html"><strong aria-hidden="true">12.</strong> Исключения, noexcept</a></li><li class="chapter-item expanded "><a href="13_constexpr_consteval_if.html"><strong aria-hidden="true">13.</strong> constexpr, consteval, if</a></li><li class="chapter-item expanded "><a href="14_decltype_declval_auto.html"><strong aria-hidden="true">14.</strong> decltype, declval, auto</a></li><li class="chapter-item expanded "><a href="15_SFINAE.html"><strong aria-hidden="true">15.</strong> SFINAE</a></li><li class="chapter-item expanded "><a href="16_RAII_smart_pointers.html" class="active"><strong aria-hidden="true">16.</strong> RAII, умные указатели</a></li><li class="chapter-item expanded "><a href="17_EBO_RVO_PGO_LTO.html"><strong aria-hidden="true">17.</strong> EBO, RVO, PGO, LTO</a></li><li class="chapter-item expanded "><a href="18_lambda.html"><strong aria-hidden="true">18.</strong> Лямбда-функции</a></li><li class="chapter-item expanded "><a href="19_type_erasure_pattern.html"><strong aria-hidden="true">19.</strong> Type-erasure паттерн</a></li><li class="chapter-item expanded "><a href="20_threading_problems.html"><strong aria-hidden="true">20.</strong> Проблемы с многопоточностью</a></li><li class="chapter-item expanded "><a href="21_atomics_memory_order.html"><strong aria-hidden="true">21.</strong> std::atomic, memory order</a></li><li class="chapter-item expanded "><a href="22_volatile.html"><strong aria-hidden="true">22.</strong> Квалификатор volatile</a></li><li class="chapter-item expanded "><a href="23_promise_future_async.html"><strong aria-hidden="true">23.</strong> std::promise, std::future, std::async</a></li><li class="chapter-item expanded "><a href="24_coroutines.html"><strong aria-hidden="true">24.</strong> Корутины</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="Что-такое-raii"><a class="header" href="#Что-такое-raii">Что такое RAII</a></h2>
+<p>RAII (Resource Acquisition Is Initialization) значит, что при получении какого-либо ресурса, его инициализируют в конструкторе, а, поработав с ним в функции - корректно освобождают в деструкторе. Даже если в коде бросится исключение, то RAII-объект должен корректно уничтожить принадлежащий ему объект.</p>
+<p>Существует три типа гарантии безопасности исключений:</p>
+<ol>
+<li>Базовая гарантия - при возникновении любого исключения в некотором методе, состояние программы должно оставаться согласованным. Это означает, не только отсутствие утечек ресурсов, но и сохранение инвариантов класса.</li>
+<li>Строгая гарантия - если при выполнении операции возникает исключение, то это не должно оказать какого-либо влияния на состояние приложения. Другими словами, строгая гарантия исключений обеспечивает транзакционность операций.</li>
+<li>Гарантия отсутствия исключений - ни при каких обстоятельствах функция не будет генерировать исключения.</li>
+</ol>
+<h2 id="stdshared_ptr"><a class="header" href="#stdshared_ptr">std::shared_ptr</a></h2>
+<p>Осуществляет подсчет ссылок. Когда количество ссылок обнулится, хранимый объект уничтожится с помощью <code>delete</code>, <code>delete[]</code> или переданного в конструкторе <code>deleter</code>'а.</p>
+<p>Копируемый. Потокобезопасный на методы своего класса при вызовах к разным экземплярам <code>shared_ptr</code> (отсюда следует, что счетчик ссылок атомарен), но может случиться data race при доступе к одному и тому же экземпляру <code>shared_ptr</code>.</p>
+<p>Из-за того, что каждое копирование <code>shared_ptr</code> - дорогое удовольствие, лучше пользоваться его передачей по ссылке, где это возможно.</p>
+<p>В конструкторе тип данных передаваемого указателя должен быть complete-типом.</p>
+<p>Частая ошибка:</p>
+<pre><code class="language-cpp">T *p = new T();
+std::shared_ptr&lt;T&gt; p1(p);
+std::shared_ptr&lt;T&gt; p2(p);
+</code></pre>
+<p>Такой код некорректен, так как у <code>p1</code> и <code>p2</code> разные счётчики ссылок, поэтому объект <code>*p</code> удалится дважды. Чтобы этого не происходило, не нужно оборачивать один сырой указатель в <code>shared_ptr</code> дважды - есть конструкторы копирования.</p>
+<h3 id="aliasing-constructor"><a class="header" href="#aliasing-constructor">Aliasing constructor</a></h3>
+<p>Иногда возникает желание ссылаться с помощью <code>shared_ptr</code> на объект и его мемберов. Наивное решение:</p>
+<pre><code class="language-cpp">struct wheel {};
+struct vehicle {
+    std::array&lt;std::shared_ptr&lt;wheel&gt;, 4&gt; wheels;
+};
+</code></pre>
+<p>Проблема такого подхода в том, что при удалении <code>vehicle</code>, <code>wheel</code> остаются живы, пока на них кто-то ссылается.</p>
+<p>Можем захотеть такое поведение: пока кто-то ссылается на составную часть объекта, основной объект жив. Для этого можно использовать для них общий счётчик ссылок.</p>
+<pre><code class="language-cpp">struct wheel {};
+struct vehicle {
+    std::array&lt;wheel, 4&gt; wheels;
+};
+
+void foo() {
+    std::shared_ptr&lt;vehicle&gt; v(new vehicle());
+    std::shared_ptr&lt;std::array&lt;wheel, 4&gt;&gt; w(v, &amp;v-&gt;wheels);
+
+    store_for_later(w);
+} // vehicle is still alive
+</code></pre>
+<p>В таком случае оба указателя отвечают за удаление объекта <code>vehicle</code> (в зависимости от того, какой из указателей будет разрушен раньше), поэтому <code>deleter</code> у них общий, кроме того в управляющем блоке хранится указатель на исходный объект, чтобы передать его в <code>deleter</code>.</p>
+<h3 id="stdmake_shared---зачем"><a class="header" href="#stdmake_shared---зачем">std::make_shared - зачем?</a></h3>
+<p>Потенциально одна аллокация вместо двух + cache-friendly - <code>control block</code> и объект, которым владеем, лежат в одном куске памяти.</p>
+<p>Кроме экономии аллокаций, <code>make_shared</code> избавляет нас от необходимости следить за исключениями в <code>new</code>. Пример кода:</p>
+<pre><code class="language-cpp">bar(std::shared_ptr&lt;mytype&gt;(new mytype(1, 2, 3)),
+    std::shared_ptr&lt;mytype&gt;(new mytype(4, 5, 6)));
+</code></pre>
+<p>Так как порядок выполнения не задан, сначала может вызваться первый <code>new</code>, затем второй, а потом только конструкторы <code>shared_ptr</code>. В таком случае, если второй <code>new</code> кинет исключение, то первый объект не удалится. <code>make_shared</code> позволяет избежать этой ошибки.</p>
+<h3 id="stdenable_shared_from_this---зачем"><a class="header" href="#stdenable_shared_from_this---зачем">std::enable_shared_from_this - зачем?</a></h3>
+<p>Мы уже сказали, что следующий код некорректен:</p>
+<pre><code class="language-cpp">T *p = new T();
+std::shared_ptr&lt;T&gt; p1(p);
+std::shared_ptr&lt;T&gt; p2(p);
+</code></pre>
+<p>Точно такой же ошибкой, но в другой обертке, может стать и возврат из метода класса <code>shared_ptr(this)</code>, если текущий объект уже находится под наблюдением <code>shared_ptr</code>.</p>
+<p>Пример хорошего и плохого кода:</p>
+<pre><code class="language-cpp">#include &lt;memory&gt;
+#include &lt;iostream&gt;
+
+struct Good : std::enable_shared_from_this&lt;Good&gt; {
+    std::shared_ptr&lt;Good&gt; getptr() {
+        return shared_from_this();
+    }
+};
+
+struct Bad {
+    std::shared_ptr&lt;Bad&gt; getptr() {
+        return std::shared_ptr&lt;Bad&gt;(this);
+    }
+    ~Bad() {
+        std::cout &lt;&lt; &quot;Bad::~Bad() called\n&quot;;
+    }
+};
+
+int main() {
+    // Good: the two shared_ptr's share the same object
+    std::shared_ptr&lt;Good&gt; gp1(new Good);
+    std::shared_ptr&lt;Good&gt; gp2 = gp1-&gt;getptr();
+ 
+    // Bad, each shared_ptr thinks it's the only owner of the object
+    std::shared_ptr&lt;Bad&gt; bp1(new Bad);
+    std::shared_ptr&lt;Bad&gt; bp2 = bp1-&gt;getptr();
+} // UB: double-delete of Bad
+</code></pre>
+<h2 id="stdweak_ptr"><a class="header" href="#stdweak_ptr">std::weak_ptr</a></h2>
+<p>Этот умный указатель ходит в паре с <code>shared_ptr</code> и может ссылаться только на объекты, которые захвачены каким-либо <code>shared_ptr</code>.</p>
+<p>Отсюда способ его получения - либо конструкторы от других <code>weak_ptr</code>, либо конструктор от <code>shared_ptr</code>.</p>
+<p>Сами по себе <code>weak_ptr</code> не влияют на счетчик, который ведут <code>shared_ptr</code>, от которого зависит время жизни захваченного во владение объекта, однако счетчик слабых ссылок существует все равно, поскольку необходимо знать, когда нужно удалять <code>control block</code>.</p>
+<p>Имея экземпляр <code>weak_ptr</code> можно получить <code>shared_ptr</code> на ссылаемый объект с помощью метода <code>weak_ptr::lock()</code>, который вернет экземпляр <code>shared_ptr</code>, который ссылается на исходный объект (сделав +1 к счетчику, разумеется), если количество &quot;сильных&quot; ссылок еще не обнулено, и объект не удален, либо вернет пустой <code>shared_ptr</code>.</p>
+<p>Данный указатель является потокобезопасным в том же смысле, как <code>shared_ptr</code>.</p>
+<p>Использование <code>weak_ptr</code> необходимо, в частности, чтобы иметь два объекта, ссылающихся на друг друга умными указателями, но при этом не вызывающих утечку памяти.</p>
+<h2 id="Приведение-shared_ptr-к-указателям-другого-типа"><a class="header" href="#Приведение-shared_ptr-к-указателям-другого-типа">Приведение shared_ptr к указателям другого типа</a></h2>
+<p>В стандартной библиотеке реализованы все 4 вида кастов (<code>static</code>, <code>dynamic</code>, <code>const</code>, <code>reinterpret</code>) для <code>shared_ptr</code> - они создают новый инстанс <code>shared_ptr</code>, который хранит указатель, приведённый соответствующим кастом, и разделяет владение (счётчик ссылок) с исходным <code>shared_ptr</code> (привет, aliasing constructor).</p>
+<p>Внутри это выглядит так, на примере <code>static_cast</code>:</p>
+<pre><code class="language-cpp">template &lt;class T, class U&gt; 
+std::shared_ptr&lt;T&gt; static_pointer_cast(const std::shared_ptr&lt;U&gt;&amp; r) noexcept {
+    auto p = static_cast&lt;typename std::shared_ptr&lt;T&gt;::element_type*&gt;(r.get());
+    return std::shared_ptr&lt;T&gt;(r, p);
+}
+</code></pre>
+<p><code>dynamic_cast</code> выглядит немного иначе - в случае &quot;неудачного каста&quot; (который возвращает <code>nullptr</code>) вернется пустой <code>shared_ptr</code>.</p>
+<h2 id="stdunique_ptr"><a class="header" href="#stdunique_ptr">std::unique_ptr</a></h2>
+<p>До внедрения в стандарт move-семантики (до С++11) разработчики могли хотеть в языке указатель, следовавший концепции RAII, но не разделяющий владение. Так появился <code>auto_ptr</code>.</p>
+<p>С приходом C++11 его пришлось пометить как <code>deprecated</code>, поскольку его оператор присваивания работал ровным счетом как оператор перемещения сейчас, что могло приводить к непониманию и абсолютно не вписывалось в новые фишки стандарта. Так появился <code>unique_ptr</code>.</p>
+<p><code>unique_ptr</code> не хранит счетчик ссылок (а является полным владельцем переданного ему указателя), конструктор копирования и оператор присваивания у него запрещены, зато его можно мувать.</p>
+<p>В отличие от <code>shared_ptr</code> этому умному указателю не нужны дополнительные функции для кастования (опять же, потому что он является полным владельцем своего объекта), но ему так же можно настраивать <code>deleter</code> и вызывать функцию <code>make_unique()</code>, подобную таковой у первого указателя.</p>
+<hr />
+<p>Заимствования:</p>
+<p><a href="https://github.com/lejabque/cpp-notes/blob/master/src/16_smart_pointers.md">cpp-notes/16_smart_pointers.md at master · lejabque/cpp-notes (github.com)</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/memory/enable_shared_from_this">std::enable_shared_from_this - cppreference.com</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="15_SFINAE.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="17_EBO_RVO_PGO_LTO.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="15_SFINAE.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="17_EBO_RVO_PGO_LTO.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Наследование, virtual, приведение типов</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="01_object.html"><strong aria-hidden="true">1.</strong> Объект</a></li><li class="chapter-item expanded "><a href="02_alignment.html"><strong aria-hidden="true">2.</strong> Выравнивание</a></li><li class="chapter-item expanded "><a href="03_storage_duration.html"><strong aria-hidden="true">3.</strong> Типы размещения</a></li><li class="chapter-item expanded "><a href="04_namespaces_aliases_adl.html"><strong aria-hidden="true">4.</strong> Пространства имен, алиасы, ADL</a></li><li class="chapter-item expanded "><a href="05_inline_ODR_linkage.html"><strong aria-hidden="true">5.</strong> Inline, ODR и связывание</a></li><li class="chapter-item expanded "><a href="06_refs_and_pointers.html"><strong aria-hidden="true">6.</strong> Ссылки и указатели</a></li><li class="chapter-item expanded "><a href="07_value_categories_move.html"><strong aria-hidden="true">7.</strong> Категории значений, move-семантика</a></li><li class="chapter-item expanded "><a href="08_references_forward.html"><strong aria-hidden="true">8.</strong> Ссылки и std::forward</a></li><li class="chapter-item expanded "><a href="09_inheritance_virtual_cast.html" class="active"><strong aria-hidden="true">9.</strong> Наследование, virtual, приведение типов</a></li><li class="chapter-item expanded "><a href="10_templates.html"><strong aria-hidden="true">10.</strong> Шаблоны</a></li><li class="chapter-item expanded "><a href="11_variadic_templates.html"><strong aria-hidden="true">11.</strong> Variadic templates</a></li><li class="chapter-item expanded "><a href="12_exceptions_noexcept.html"><strong aria-hidden="true">12.</strong> Исключения, noexcept</a></li><li class="chapter-item expanded "><a href="13_constexpr_consteval_if.html"><strong aria-hidden="true">13.</strong> constexpr, consteval, if</a></li><li class="chapter-item expanded "><a href="14_decltype_declval_auto.html"><strong aria-hidden="true">14.</strong> decltype, declval, auto</a></li><li class="chapter-item expanded "><a href="15_SFINAE.html"><strong aria-hidden="true">15.</strong> SFINAE</a></li><li class="chapter-item expanded "><a href="16_RAII_smart_pointers.html"><strong aria-hidden="true">16.</strong> RAII, умные указатели</a></li><li class="chapter-item expanded "><a href="17_EBO_RVO_PGO_LTO.html"><strong aria-hidden="true">17.</strong> EBO, RVO, PGO, LTO</a></li><li class="chapter-item expanded "><a href="18_lambda.html"><strong aria-hidden="true">18.</strong> Лямбда-функции</a></li><li class="chapter-item expanded "><a href="19_type_erasure_pattern.html"><strong aria-hidden="true">19.</strong> Type-erasure паттерн</a></li><li class="chapter-item expanded "><a href="20_threading_problems.html"><strong aria-hidden="true">20.</strong> Проблемы с многопоточностью</a></li><li class="chapter-item expanded "><a href="21_atomics_memory_order.html"><strong aria-hidden="true">21.</strong> std::atomic, memory order</a></li><li class="chapter-item expanded "><a href="22_volatile.html"><strong aria-hidden="true">22.</strong> Квалификатор volatile</a></li><li class="chapter-item expanded "><a href="23_promise_future_async.html"><strong aria-hidden="true">23.</strong> std::promise, std::future, std::async</a></li><li class="chapter-item expanded "><a href="24_coroutines.html"><strong aria-hidden="true">24.</strong> Корутины</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="Наследование-и-переопределение"><a class="header" href="#Наследование-и-переопределение">Наследование и переопределение</a></h2>
+<p>Внимание: наследование классов иногда влечет за собой использование виртуального деструктора. Рекомендуется к прочтению ниже.</p>
+<p>Представим, что у нас есть такой код:</p>
+<pre><code class="language-cpp">struct vehicle {
+    void beep() {
+        std::cout &lt;&lt; &quot;vehicle does beep-beep\n&quot;;
+    }
+};
+
+struct bus : vehicle {
+    void beep() {
+        std::cout &lt;&lt; &quot;bus does beep-beep\n&quot;;
+    }
+};
+
+int main() {
+    bus b;
+    b.beep();
+    vehicle&amp; v = b;
+    v.beep();
+}
+</code></pre>
+<p>Люди, пишущие код на Java, привыкли к тому, что переопределение метода сохраняется при приведении класса-потомка к более базовому классу. Поэтому они могут ожидать, что код дважды вернет <code>bus does beep-beep</code>, но по умолчанию в С++ это не так.</p>
+<p>Правильный ответ такой:</p>
+<pre><code>bus does beep-beep
+vehicle does beep-bepp
+</code></pre>
+<p>Добавление в потомке метода с сигнатурой, уже определенной ранее в классе-родителе, не переопределяет методы базового класса. Можно в каждом потомке писать метод <code>void foo(int, int)</code>, и полученный объект действительно будет все их содержать.</p>
+<p>Как вызвать определенный метод, если таких в цепочке наследования было несколько?</p>
+<ul>
+<li>через приведение к базовому типу</li>
+<li>через квалифицированный поиск (смотри <code>namespaces, aliases, adl</code>)</li>
+</ul>
+<p>Пример квалифицированного поиска:</p>
+<pre><code class="language-cpp">struct vehicle {
+    void beep() {
+        std::cout &lt;&lt; &quot;vehicle does beep-beep\n&quot;;
+    }
+};
+
+struct bus : vehicle {
+    void beep() {
+        std::cout &lt;&lt; &quot;bus does beep-beep\n&quot;;
+    }
+};
+
+
+struct liaz : bus {
+    void beep() {
+        std::cout &lt;&lt; &quot;liaz does beep-beep\n&quot;;
+    }
+};
+
+int main() {
+    liaz l;
+    l.beep();
+    l.bus::beep();
+    l.vehicle::beep();
+}
+</code></pre>
+<p>Вывод:</p>
+<pre><code>liaz does beep-beep
+bus does beep-beep
+vehicle does beep-beep
+</code></pre>
+<p>Компилятор будет искать вызываемый метод начиная с того класса в цепочке наследования, на котором он был вызван, переходя при неудаче к предкам. То есть необязательно вызывать метод непосредственно на том классе, в котором он объявлен - можно запускать поиск и с потомков. Но есть нюанс:</p>
+<h2 id="Множественное-наследование"><a class="header" href="#Множественное-наследование">Множественное наследование</a></h2>
+<p>В С++ классам разрешено иметь более одного родителя:</p>
+<pre><code class="language-cpp">struct platform {
+    void f() {}
+};
+
+struct body {
+    void f() {}
+};
+
+struct vehicle : platform, body {};
+</code></pre>
+<p>Но что будет, если теперь запустить поиск метода <code>void f()</code> из класса vehicle?</p>
+<pre><code class="language-cpp">int main() {
+    vehicle v;
+    v.f(); // ???
+}
+</code></pre>
+<p>Мы получим ошибку компиляции, так как в overload resolution придут оба кандидата, как глубоко бы не был вложен метод <code>f()</code> в цепочке наследования, поэтому здесь не обойтись без приведения к нужному классу-родителю или без квалифицированного поиска.</p>
+<p>Внимание: даже если один из родителей будет наследоваться приватно, все равно будет получена ошибка компиляции.</p>
+<p>Все те же правила применимы к полям классов.</p>
+<h2 id="Виртуальные-методы-virtual-и-override"><a class="header" href="#Виртуальные-методы-virtual-и-override">Виртуальные методы (virtual и override)</a></h2>
+<p>Внимание: использование виртуальных функций зачастую требует знания <code>dynamic_cast</code>. Рекомендуется к прочтению ниже.</p>
+<p>Добиться похожего в Java переопределения методов можно с помощью ключевого слова <code>virtual</code> рядом с нужным методом.</p>
+<pre><code class="language-cpp">struct vehicle {
+    virtual void beep() {
+        std::cout &lt;&lt; &quot;vehicle does beep-beep\n&quot;;
+    }
+};
+
+struct bus : vehicle {
+    void beep() {
+        std::cout &lt;&lt; &quot;bus does beep-beep\n&quot;;
+    }
+};
+
+int main() {
+    bus b;
+    b.beep();
+    vehicle&amp; v = b;
+    v.beep();
+}
+</code></pre>
+<p>Теперь начиная с класса <code>vehicle</code> и далее по потомкам метод <code>beep</code> всегда будет вызывать последнее переопределение:</p>
+<pre><code class="language-cpp">bus does beep-beep
+bus does beep-beep
+</code></pre>
+<p>Для классов, являющихся предками <code>vehicle</code> сохраняется обычное поведение.</p>
+<p>Было бы неудобно писать один раз где-то далеко <code>virtual</code> и никак о нем не вспоминать при дальнейшей разработке, поэтому можно либо писать его и во всех последующих переопределениях, либо писать ключевое слово <code>override</code>, которое ничего не делает, кроме проверки компилятора на то, что данный метод действительно является виртуальным (зато сразу понятно, что следует от него ожидать).</p>
+<pre><code class="language-cpp">struct vehicle {
+    virtual void beep() {}
+};
+
+struct bus : vehicle {
+    void beep() override {}
+};
+</code></pre>
+<p>Квалифицированный поиск при точном указании класса-родителя, у которого нужно вызывать метод вызывает именно этот метод и не обращает внимание на виртуальность. Если в указанном родителе метода не было, то компилятор так же, как и раньше, будет идти по предкам и искать, кого бы вызвать. При нахождении такого метода виртуальность тоже будет проигнорирована.</p>
+<p>Использование виртуальных функций не дается за бесплатно. Каждый их вызов - потенциальные прыжки по указателям, поскольку для поддержания такого поведения необходима дополнительная структура, де-факто являющаяся так называемой таблицей виртуальных функций (vtable).</p>
+<p>Отсюда мемы, что в Java все функции - виртуальные, и что &quot;этот господин за все заплатит&quot;.</p>
+<h2 id="Виртуальный-деструктор-ошибка-разрушения-базового-класса"><a class="header" href="#Виртуальный-деструктор-ошибка-разрушения-базового-класса">Виртуальный деструктор, ошибка разрушения базового класса</a></h2>
+<p>Рассмотрим следующий код:</p>
+<pre><code class="language-cpp">struct vehicle {
+    ~vehicle() {
+        std::cout &lt;&lt; &quot;vehicle destroyed\n&quot;;
+    }
+};
+
+struct bus : vehicle {
+    ~bus() {
+        std::cout &lt;&lt; &quot;bus destroyed\n&quot;;
+    }
+};
+
+int main() {
+    bus b;
+}
+</code></pre>
+<p>Он является корректным: мы создали машину, затем автобус, а достигнув конца блока <code>main</code> разрушили сначала автобус, затем машину. Но что будет со следующим кодом?</p>
+<pre><code class="language-cpp">vehicle* v = new bus();
+delete v;
+</code></pre>
+<p>Будет вызван только деструктор класса <code>vehicle</code>, а память класса <code>bus</code> утечет. Так происходит, поскольку компилятор не знает, что по указателю лежит не просто класс <code>vehicle</code>. Может быть еще хуже, если класс <code>bus</code> будет иметь в себе указатель на условный гигабайт данных, который мы тоже не удалим.</p>
+<p>Для решения этой проблемы деструктор базового класса предлагается делать виртуальным:</p>
+<pre><code class="language-cpp">struct vehicle {
+    virtual ~vehicle() {/* ... */}
+};
+
+struct bus : vehicle {
+    ~bus() {/* ... */}
+};
+</code></pre>
+<p>В таком случае удалению базового класса будет всегда приводить сначала к удалению производного, затем базового, что правильно.</p>
+<h2 id="Виртуальное-наследование-virtual"><a class="header" href="#Виртуальное-наследование-virtual">Виртуальное наследование (virtual)</a></h2>
+<p>Рассмотрим следующий код:</p>
+<pre><code class="language-cpp">struct base {
+    void f() {}
+}
+
+struct left : base {}
+struct right : base {}
+
+struct top : left, right {}
+
+int main() {
+    top t;
+    t.f();
+}
+</code></pre>
+<p>Здесь есть две проблемы:</p>
+<ol>
+<li>Классы <code>left</code> и <code>right</code> оба имеют метод <code>void f()</code>, поэтому мы получим ошибку компиляции (но ведь для нас этот метод все равно один, в каком-то смысле!)</li>
+<li>Класс <code>top</code> будет содержать в себе два независимых подкласса <code>base</code>. Это подразумевает, что у них будет отдельная память, можно отдельно изменять их поля и так далее.</li>
+</ol>
+<p>Если нам не хочется иметь такое поведение, то мы можем дать команду компилятору на склеивание одинаковых базовых классов, которые были когда-то унаследованы виртуально, в один экземпляр:</p>
+<pre><code class="language-cpp">struct base {
+    void f() {}
+}
+
+struct left : virtual base {}
+struct right : virtual base {}
+
+struct top : left, right {}
+
+int main() {
+    top t;
+    t.f(); // no compile errors
+}
+</code></pre>
+<p>При этом данная техника тоже не бесплатная: при обращении к полям/методам виртуально унаследованного класса будет совершаться прыжок по указателю.</p>
+<h2 id="Приведение-типов"><a class="header" href="#Приведение-типов">Приведение типов</a></h2>
+<p>В С++ есть 5 способов приведения типов</p>
+<ol>
+<li>C-style cast</li>
+<li><code>static_cast&lt;T&gt;</code></li>
+<li><code>dynamic_cast&lt;T&gt;</code></li>
+<li><code>reinterpret_cast&lt;T&gt;</code></li>
+<li><code>const_cast&lt;T&gt;</code></li>
+</ol>
+<h3 id="c-style-cast"><a class="header" href="#c-style-cast">C-style cast</a></h3>
+<p>Может приводить практически любой тип к любому (но, например, пользовательские типы без правил приведения не удастся кастануть). Его минусом является отсутствие проверки типов на совместимость, например, так можно привести указатель на <code>int</code> к указателю на <code>std::iostream</code>. Чаще всего не рекомендуется к использованию.</p>
+<pre><code class="language-cpp">int *p = new int(5);
+std::iostream *i = (std::iostream*) p;
+</code></pre>
+<h3 id="static_cast"><a class="header" href="#static_cast">static_cast</a></h3>
+<p>Предоставляет типобезопасное приведение на уровне компиляции. Умеет кастовать числа друг к другу, а также указатели и ссылки на классы вверх или вниз по цепочке наследования. Любой указатель может быть приведен к указателю на <code>void</code> и обратно.</p>
+<h3 id="dynamic_cast"><a class="header" href="#dynamic_cast">dynamic_cast</a></h3>
+<p>Необходим для приведения полиморфных типов (классов, которые имеют виртуальные функции, либо наследуют их от предков). Если приведение по указателю было неудачным, возвращает <code>nullptr</code>. Если приведение по ссылке было неудачным, бросает <code>std::bad_cast</code>. Так как этот вид каста работает в реалтайме, то его использование в качестве замены <code>static_cast</code> является нецелесообразным из-за медленности, но, конечно, возможно.</p>
+<h3 id="reinterpret_cast"><a class="header" href="#reinterpret_cast">reinterpret_cast</a></h3>
+<p>Используется для приведения несовместимых типов друг к другу. Например, для приведения указателя к числу (или наоборот), либо указателю к другому указателю или ссылке к другой ссылке. В отличие от C-style cast не умеет изменить cv-квалификаторы (<code>const</code> и <code>volatile</code>), как и предыдущие два каста.</p>
+<h3 id="const_cast"><a class="header" href="#const_cast">const_cast</a></h3>
+<p>Единственный C++ каст, который умеет модифицировать cv-квалификаторы. А больше он ничего и не умеет. Зачастую нужен, чтобы просто снять <code>const</code>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="08_references_forward.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="10_templates.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="08_references_forward.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="10_templates.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
