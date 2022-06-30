@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Ссылки и указатели</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="01. object.html"><strong aria-hidden="true">1.</strong> Объект</a></li><li class="chapter-item expanded "><a href="02. alignment.html"><strong aria-hidden="true">2.</strong> Выравнивание</a></li><li class="chapter-item expanded "><a href="03. storage duration.html"><strong aria-hidden="true">3.</strong> Типы размещения</a></li><li class="chapter-item expanded "><a href="04. namespaces%2C aliases%2C adl.html"><strong aria-hidden="true">4.</strong> Пространства имен, алиасы, ADL</a></li><li class="chapter-item expanded "><a href="05. inline%2C ODR and linkage.html"><strong aria-hidden="true">5.</strong> Inline, ODR и связывание</a></li><li class="chapter-item expanded "><a href="06. refs and pointers.html" class="active"><strong aria-hidden="true">6.</strong> Ссылки и указатели</a></li><li class="chapter-item expanded "><a href="07. value categories%2C move.html"><strong aria-hidden="true">7.</strong> Категории значений, move-семантика</a></li><li class="chapter-item expanded "><a href="08. references and forward.html"><strong aria-hidden="true">8.</strong> Ссылки и std::forward</a></li><li class="chapter-item expanded "><a href="09. inheritance%2C virtual%2C cast.html"><strong aria-hidden="true">9.</strong> Наследование, virtual, приведение типов</a></li><li class="chapter-item expanded "><a href="10. templates.html"><strong aria-hidden="true">10.</strong> Шаблоны</a></li><li class="chapter-item expanded "><a href="11. variadic templates.html"><strong aria-hidden="true">11.</strong> Variadic templates</a></li><li class="chapter-item expanded "><a href="12. exceptions%2C noexcept.html"><strong aria-hidden="true">12.</strong> Исключения, noexcept</a></li><li class="chapter-item expanded "><a href="13. constexpr%2C consteval%2C if.html"><strong aria-hidden="true">13.</strong> constexpr, consteval, if</a></li><li class="chapter-item expanded "><a href="14. decltype%2C declval%2C auto.html"><strong aria-hidden="true">14.</strong> decltype, declval, auto</a></li><li class="chapter-item expanded "><a href="15. SFINAE.html"><strong aria-hidden="true">15.</strong> SFINAE</a></li><li class="chapter-item expanded "><a href="16. RAII%2C smart pointers.html"><strong aria-hidden="true">16.</strong> RAII, умные указатели</a></li><li class="chapter-item expanded "><a href="17. EBO%2C RVO%2C PGO%2C LTO.html"><strong aria-hidden="true">17.</strong> EBO, RVO, PGO, LTO</a></li><li class="chapter-item expanded "><a href="18. lambda.html"><strong aria-hidden="true">18.</strong> Лямбда-функции</a></li><li class="chapter-item expanded "><a href="19. type erasure pattern.html"><strong aria-hidden="true">19.</strong> Type erasure паттерн</a></li><li class="chapter-item expanded "><a href="20. threading problems.html"><strong aria-hidden="true">20.</strong> Проблемы с многопоточностью</a></li><li class="chapter-item expanded "><a href="21. atomics%2C memory order.html"><strong aria-hidden="true">21.</strong> std::atomic, memory_order</a></li><li class="chapter-item expanded "><a href="22. volatile.html"><strong aria-hidden="true">22.</strong> Квалификатор volatile</a></li><li class="chapter-item expanded "><a href="23. promise%2C future%2C async.html"><strong aria-hidden="true">23.</strong> std::promise, std::future, std::async</a></li><li class="chapter-item expanded "><a href="24. coroutines.html"><strong aria-hidden="true">24.</strong> Корутины</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Ссылки-и-указатели"><a class="header" href="#Ссылки-и-указатели">Ссылки и указатели</a></h1>
+<p>Ссылка - это псевдоним к определенной ранее переменной.
+Указатель - это объект, значением которого является адрес ячейки памяти.</p>
+<p>Разница?</p>
+<h4 id="Инициализация"><a class="header" href="#Инициализация">Инициализация</a></h4>
+<p>Ссылку обязательно инициализировать. Она не может указывать вникуда или быть пустой, в отличие от указателя, которому задавать начальное значение необязательно.</p>
+<h4 id="Изменение-значения"><a class="header" href="#Изменение-значения">Изменение значения</a></h4>
+<p>Ссылка не может быть переопределена, вместо этого присвоится значение переменной, на которую ссылка ссылается, если она не константная. Присваивать же новое значение указателю можно, если он не константный.</p>
+<h4 id="Взятие-адреса"><a class="header" href="#Взятие-адреса">Взятие адреса</a></h4>
+<p>Ссылка - псевдоним к переменной, а не объект. Взятие адреса от ссылки будет возвращать адрес объекта, на который ссылка ссылается. Взятие же адреса указателя будет возвращать адрес указателя, а не объекта, на который указатель ссылается.</p>
+<p>По стандарту ссылка - не объект, но при определенных условиях, ссылки могут компилироваться в указатели.</p>
+<p>Рекомендация: используйте ссылки вместо указателей, если вам не нужно передавать пустое значение (читай, <code>nullptr</code>).</p>
+<h2 id="Интересное-про-ссылки"><a class="header" href="#Интересное-про-ссылки">Интересное про ссылки</a></h2>
+<h3 id="Краткие-факты"><a class="header" href="#Краткие-факты">Краткие факты</a></h3>
+<ul>
+<li>Ссылки на ссылку не бывает. Они коллапсируют в одну.</li>
+<li>Ссылки типа <code>void</code> не бывает.</li>
+<li>Ссылка может продлить время жизни объекта, если это <code>lvalue</code>-ссылка на const или <code>rvalue</code>-ссылка.</li>
+</ul>
+<h3 id="dangling-reference"><a class="header" href="#dangling-reference">Dangling reference</a></h3>
+<p>Ссылки были созданы, чтобы сделать указатели безопаснее, но даже их можно сломать.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+int&amp; bar() {
+    int n = 10;
+    return n;
+}
+
+int main() {
+    int&amp; i = bar();
+    std::cout &lt;&lt; i &lt;&lt; std::endl;
+}
+</code></pre>
+<p>Функция <code>bar()</code> вернет ссылку на локальную переменную, которая уничтожится при выходе из нее. Соответственно, такая ссылка будет невалидной и операции с ней - это undefined behavior.</p>
+<p>Но вот так делать можно, конечно.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+const int&amp; bar(const int&amp; a) {
+    return a;
+}
+
+int main() {
+    const int&amp; i = bar(42);
+    std::cout &lt;&lt; i &lt;&lt; std::endl;
+}
+</code></pre>
+<h3 id="Передача-массива-по-ссылке"><a class="header" href="#Передача-массива-по-ссылке">Передача массива по ссылке</a></h3>
+<p>Не секрет, что для работы с массивами можно использовать указатели, но в определение типа таких указателей не входит размер массива. При передаче указателя в функцию, информацию о размере нужно передавать отдельно. Чтобы с этим не париться, можно сделать ссылку на массив с фиксированным размером.</p>
+<pre><code class="language-cpp">#include &lt;type_traits&gt;
+
+// Конвертирует строковый литерал в число
+template &lt;size_t N&gt;
+int convert(const char (&amp;in)[N]) {
+    int res = 0;
+    for (const char * c = in; *c; ++c) {
+        (res *= 10) += *c - '0';
+    }
+    return res;
+}
+
+// Вычисляет длину массива
+template &lt;typename T, size_t N&gt;
+size_t len(T (&amp;a)[N]) {
+    return N;
+}
+</code></pre>
+<p>Остальные фишки ссылок будут в другой заметке.</p>
+<h2 id="Интересное-про-указатели"><a class="header" href="#Интересное-про-указатели">Интересное про указатели</a></h2>
+<h3 id="Краткие-факты-1"><a class="header" href="#Краткие-факты-1">Краткие факты</a></h3>
+<ul>
+<li>Можно сделать указатель на указатель на указатель ...</li>
+<li>Поддерживают арифметику (только указатели в рамках одного массива. остальное - UB)</li>
+</ul>
+<h3 id="Указатели-на-массивы-фиксированной-длины"><a class="header" href="#Указатели-на-массивы-фиксированной-длины">Указатели на массивы фиксированной длины</a></h3>
+<pre><code class="language-cpp">int (*a)[2];                  // create pointer to int[2]
+int b[2];
+int c[2];
+
+a = new int[2];               // compile error (returns int*)
+a = &amp;b;                       // OK (returns int(*)[2])
+a = (int(*)[2]) (new int[2]); // OK
+a = &amp;c;                       // compile error (returns int(*)[3])
+</code></pre>
+<h3 id="Многомерные-массивы-на-стеке"><a class="header" href="#Многомерные-массивы-на-стеке">Многомерные массивы на стеке</a></h3>
+<p>При объявлении многомерных массивов на стеке память выделяется непрерывно, что позволяет компилятору при индексации делать прыжок по указателю единожды.</p>
+<pre><code class="language-cpp">int x[10][10];   // выделенный на стеке многомерный массив
+int a = x[2][3]; // один прыжок
+</code></pre>
+<p>Но при индексации от указателя на него программа будет совершать честные прыжки в количестве измерений.</p>
+<pre><code class="language-cpp">int **y = x;
+int b = y[2][3]; // два прыжка
+</code></pre>
+<h3 id="Как-читать-мешанину-со-словом-const"><a class="header" href="#Как-читать-мешанину-со-словом-const">Как читать мешанину со словом const</a></h3>
+<p>Ключевое слово <code>const</code> относится к тому, что слева, если не в начале строки, иначе к тому, что справа.</p>
+<pre><code class="language-cpp">int a = 42;
+const int b;              // нет инициализации, compile error
+const int c = a;          // константный int
+int const d = a;          // то же самое
+
+const int * e = &amp;a;       // изменяемый указатель на неизменяемый int
+int const * f = &amp;a;       // то же самое
+
+int * const g = &amp;a;       // неизменяемый указатель на изменяемый int
+const int * const h = &amp;a; // константный указатель на константу
+</code></pre>
+<h3 id="Указатель-на-функцию"><a class="header" href="#Указатель-на-функцию">Указатель на функцию</a></h3>
+<pre><code class="language-cpp">double sum(int a, long b) {
+    return a + b;
+}
+
+double (*ptr)(int, long) = sum;
+double (*ptr)(int, long) = &amp;sum; // эквивалентно
+
+double c = (*ptr)(1, 2l);
+double c = ptr(1, 2l); // эквивалентно
+</code></pre>
+<h3 id="Массив-указателей-на-массив"><a class="header" href="#Массив-указателей-на-массив">Массив указателей на массив</a></h3>
+<pre><code class="language-cpp">int A[5][5];
+int B[5][5];
+int (*C[])[5][5] = {&amp;A, &amp;B};
+</code></pre>
+<h3 id="Пример-от-Артема-К"><a class="header" href="#Пример-от-Артема-К">Пример от Артема К</a></h3>
+<pre><code class="language-cpp">double (* (* x[10]) (int &amp;))[5];
+</code></pre>
+<p>x — это массив из 10 указателей на функции, которые принимают аргументом <code>int&amp;</code>, а возвращают массив из 5 <code>double</code>.</p>
+<h3 id="Как-парсить-подобные-вещи"><a class="header" href="#Как-парсить-подобные-вещи">Как парсить подобные вещи</a></h3>
+<ul>
+<li>Парсим изнутри, начиная с имени переменной</li>
+<li>Идем вправо, потом влево</li>
+<li>Потом на следующий уровень наружу</li>
+</ul>
+<p>Пример:</p>
+<pre><code class="language-cpp">void * (* y[5])(char);
+</code></pre>
+<p>y — это:</p>
+<ol>
+<li>массив из пяти</li>
+<li>указателей</li>
+<li>на функцию, принимающую char</li>
+<li>и возвращающую void *</li>
+</ol>
+<h3 id="Пример-от-Артема-К-1"><a class="header" href="#Пример-от-Артема-К-1">Пример от Артема К</a></h3>
+<pre><code class="language-cpp">int (* (** (* (* x)[5])(void))[10])();
+</code></pre>
+<p>x - это указатель на массив размера 5 из указателей на функции, принимающие void (то есть не принимающие аргументов - это альтернативный синтаксис) и отдающие указатель на указатель на массив размера 10 из указателей на функции без аргументов, возвращающие int</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="05. inline%2C ODR and linkage.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="07. value categories%2C move.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="05. inline%2C ODR and linkage.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="07. value categories%2C move.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

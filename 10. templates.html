@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Шаблоны</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="01. object.html"><strong aria-hidden="true">1.</strong> Объект</a></li><li class="chapter-item expanded "><a href="02. alignment.html"><strong aria-hidden="true">2.</strong> Выравнивание</a></li><li class="chapter-item expanded "><a href="03. storage duration.html"><strong aria-hidden="true">3.</strong> Типы размещения</a></li><li class="chapter-item expanded "><a href="04. namespaces%2C aliases%2C adl.html"><strong aria-hidden="true">4.</strong> Пространства имен, алиасы, ADL</a></li><li class="chapter-item expanded "><a href="05. inline%2C ODR and linkage.html"><strong aria-hidden="true">5.</strong> Inline, ODR и связывание</a></li><li class="chapter-item expanded "><a href="06. refs and pointers.html"><strong aria-hidden="true">6.</strong> Ссылки и указатели</a></li><li class="chapter-item expanded "><a href="07. value categories%2C move.html"><strong aria-hidden="true">7.</strong> Категории значений, move-семантика</a></li><li class="chapter-item expanded "><a href="08. references and forward.html"><strong aria-hidden="true">8.</strong> Ссылки и std::forward</a></li><li class="chapter-item expanded "><a href="09. inheritance%2C virtual%2C cast.html"><strong aria-hidden="true">9.</strong> Наследование, virtual, приведение типов</a></li><li class="chapter-item expanded "><a href="10. templates.html" class="active"><strong aria-hidden="true">10.</strong> Шаблоны</a></li><li class="chapter-item expanded "><a href="11. variadic templates.html"><strong aria-hidden="true">11.</strong> Variadic templates</a></li><li class="chapter-item expanded "><a href="12. exceptions%2C noexcept.html"><strong aria-hidden="true">12.</strong> Исключения, noexcept</a></li><li class="chapter-item expanded "><a href="13. constexpr%2C consteval%2C if.html"><strong aria-hidden="true">13.</strong> constexpr, consteval, if</a></li><li class="chapter-item expanded "><a href="14. decltype%2C declval%2C auto.html"><strong aria-hidden="true">14.</strong> decltype, declval, auto</a></li><li class="chapter-item expanded "><a href="15. SFINAE.html"><strong aria-hidden="true">15.</strong> SFINAE</a></li><li class="chapter-item expanded "><a href="16. RAII%2C smart pointers.html"><strong aria-hidden="true">16.</strong> RAII, умные указатели</a></li><li class="chapter-item expanded "><a href="17. EBO%2C RVO%2C PGO%2C LTO.html"><strong aria-hidden="true">17.</strong> EBO, RVO, PGO, LTO</a></li><li class="chapter-item expanded "><a href="18. lambda.html"><strong aria-hidden="true">18.</strong> Лямбда-функции</a></li><li class="chapter-item expanded "><a href="19. type erasure pattern.html"><strong aria-hidden="true">19.</strong> Type erasure паттерн</a></li><li class="chapter-item expanded "><a href="20. threading problems.html"><strong aria-hidden="true">20.</strong> Проблемы с многопоточностью</a></li><li class="chapter-item expanded "><a href="21. atomics%2C memory order.html"><strong aria-hidden="true">21.</strong> std::atomic, memory_order</a></li><li class="chapter-item expanded "><a href="22. volatile.html"><strong aria-hidden="true">22.</strong> Квалификатор volatile</a></li><li class="chapter-item expanded "><a href="23. promise%2C future%2C async.html"><strong aria-hidden="true">23.</strong> std::promise, std::future, std::async</a></li><li class="chapter-item expanded "><a href="24. coroutines.html"><strong aria-hidden="true">24.</strong> Корутины</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="Объявление-шаблона"><a class="header" href="#Объявление-шаблона">Объявление шаблона</a></h2>
+<p>Объявление шаблонного класса или шаблонной функции в примере ниже:</p>
+<pre><code class="language-cpp">template &lt;typename T&gt;
+struct vector {
+    void push_back(T const &amp;);
+    T const&amp; operator[](size_t index) const;
+    
+    template &lt;typename U&gt;
+    void g(T, U);
+};
+
+template &lt;typename T&gt;
+void f(T&amp;&amp; a, T&amp;&amp; b) {
+    std::cout &lt;&lt; a + b &lt;&lt; std::endl;
+}
+</code></pre>
+<p>Вместо T и U будет подставляться тот тип, который был указан в шаблонном параметре при использовании класса/функции. Также в большинстве случаев компилятор может вывести тип самостоятельно без явного его указания.</p>
+<pre><code class="language-cpp">vector&lt;int&gt; v;
+vector&lt;double&gt; v2;
+
+v.template g&lt;float&gt;(42, 42.0);
+v.g(42, 42.0); // same
+
+f(1, 3);     // 4
+f(1.5, 2.5); // 4.0
+</code></pre>
+<h2 id="Специализации"><a class="header" href="#Специализации">Специализации</a></h2>
+<p>Специализация - это выделенная реализация для каких-то указанных типов. К примеру из примера выше для <code>vector&lt;std::string&gt;</code> и <code>void f(bool&amp;&amp;, bool&amp;&amp;)</code> я бы хотел иметь другое тело функции. Это пример надуманный, конечно.</p>
+<pre><code class="language-cpp">template &lt;&gt;
+struct vector&lt;std::string&gt; {
+    /* ... */
+};
+
+template &lt;&gt;
+void f&lt;bool&gt;(bool&amp;&amp; a, bool&amp;&amp; b) {
+    std::cout &lt;&lt; (a | b) &lt;&lt; std::endl;
+}
+</code></pre>
+<p>Специализацию можно вводить не целиком, а частично, оставляя свободными другие шаблонные параметры. В качестве примера рассмотрим простенькую реализацию <code>std::conditional</code>.</p>
+<pre><code class="language-cpp">template &lt;bool Cond, typename IfTrue, typename IfFalse&gt;
+struct conditional;
+
+template &lt;typename IfTrue1, typename IfFalse1&gt;
+struct conditional&lt;false, IfTrue1, IfFalse1&gt; { // partial specialization
+    typedef IfFalse1 type;
+};
+
+template &lt;typename IfTrue1, typename IfFalse1&gt;
+struct conditional&lt;true, IfTrue1, IfFalse1&gt; { // partial specialization
+    typedef IfTrue1 type;
+};
+</code></pre>
+<p>Специализациям свойственен большее высокий приоритет при разрешениях перегрузок (overload resolution).</p>
+<pre><code class="language-cpp">template &lt;typename T&gt;
+struct vector&lt;T*&gt; {
+    /* ... */
+}
+
+vector&lt;foo*&gt; v; // выберется эта специализация
+</code></pre>
+<p>Пример неразрешимой перегрузки:</p>
+<pre><code class="language-cpp">template &lt;typename U, typename V&gt;
+struct mytype {};
+
+template &lt;typename U, typename V&gt;
+struct mytype&lt;U*, V&gt; {};
+
+template &lt;typename U, typename V&gt;
+struct mytype&lt;U, V*&gt; {};
+
+mytype&lt;long*, double*&gt; f;
+</code></pre>
+<p>Мы получим ошибку, так как есть два равноправных кандидата. Исправить это можно определением еще одной, более подходящей специализации:</p>
+<pre><code class="language-cpp">template &lt;typename U, typename V&gt;
+struct mytype&lt;U*, V*&gt; {};
+</code></pre>
+<h2 id="Ошибка-разделения-на-объявление-и-реализацию"><a class="header" href="#Ошибка-разделения-на-объявление-и-реализацию">Ошибка разделения на объявление и реализацию</a></h2>
+<p>Давайте представим, как мы могли бы писать код с шаблонными функциями, используя разделение на объявление и реализацию, как полагается.</p>
+<pre><code class="language-cpp">// util.h
+template &lt;typename T&gt;
+void f(T&amp;, T&amp;);
+
+// util.cpp
+template &lt;typename T&gt;
+void f(T&amp; a, T&amp; b) {
+    std::cout &lt;&lt; a + b &lt;&lt; std::endl;
+}
+
+// main.cpp
+#include &quot;util.h&quot;
+int main(){
+    int a, b;
+    f(a, b);
+}
+</code></pre>
+<p>Но в данном примере, к сожалению, мы получим ошибку компиляции. Так происходит, потому что генерация и подстановка кода шаблонов (инстанцирование) происходит до линковки и после компиляции каждой отдельной единицы трансляции. Компилятор, обрабатывая <code>util.cpp</code>, не знает о том, что кто-то будет вызывать <code>f(int, int)</code> в других единицах трансляции.</p>
+<p>На самом деле все шаблонные функции неявно являются <code>inline</code>, поэтому их реализацию можно сразу писать в <code>.h</code> файле.</p>
+<h2 id="Инстанцирование"><a class="header" href="#Инстанцирование">Инстанцирование</a></h2>
+<p>В стандарте прописано, что инстанцирование происходит только когда это необходимо. При этом компилятор может делать это в конце единицы трансляции.</p>
+<p>В следующем примере приводится случай, который это показывает:</p>
+<pre><code class="language-cpp">template &lt;typename T&gt;
+struct foo {
+    T* a;
+    void f(){
+        T a;
+    }
+};
+
+int main() {
+    foo&lt;void&gt; a; // так скомпилируется
+    a.f();       // а так нет, ошибка из-за void a
+}
+</code></pre>
+<p>Генерация и подстановка по требованию, так сказать. С классами работает аналогично: полное тело класса не подставляется, если не требуется. Пример:</p>
+<pre><code class="language-cpp">template &lt;typename T&gt;
+struct foo {
+    T a;
+};
+
+int main() {
+    foo&lt;void&gt;* a; // так скомпилируется
+    a-&gt;a;         // а так нет, опять ошибка из-за void a
+}
+</code></pre>
+<h2 id="Явное-инстанцирование"><a class="header" href="#Явное-инстанцирование">Явное инстанцирование</a></h2>
+<p>Пусть мы не хотим, чтобы одни и те же лишние инстанцирования были в разных единицах трансляции. Чтобы этого избежать, можно делать так:</p>
+<pre><code class="language-cpp">template &lt;typename T&gt;
+void foo(T) {}
+
+template void foo&lt;int&gt;(int); // генерирует тело функции в этом месте
+template void foo&lt;float&gt;(float);
+template void foo&lt;double&gt;(double);
+</code></pre>
+<h2 id="Подавление-инстанцирования"><a class="header" href="#Подавление-инстанцирования">Подавление инстанцирования</a></h2>
+<p>Пусть мы знаем, что функции уже где-то инстанцированы и мы не хотим лишних:</p>
+<pre><code class="language-cpp">extern template void foo&lt;int&gt;(int); 
+extern template void foo&lt;float&gt;(float);
+</code></pre>
+<p>Выдаём тело наружу и говорим, что уже проинстанцировано. <code>main</code> не будет пытаться инстанцировать функцию, так как увидит <code>extern</code> и будет работать соответствующе.</p>
+<p>Теперь зная про шаблоны и специализации можно творить всякую магию:</p>
+<h2 id="Подсчет-факториала-в-compile-time"><a class="header" href="#Подсчет-факториала-в-compile-time">Подсчет факториала в compile-time</a></h2>
+<p>Осторожно, при отрицательных значениях компилятор может надолго зависнуть.</p>
+<pre><code class="language-cpp">template &lt;int T&gt;
+struct factorial {
+    static const int result = T * factorial&lt;T - 1&gt;::result;
+};
+
+
+template &lt;&gt;
+struct factorial&lt;0&gt; {
+    static const int result = 1;
+};
+
+static_assert(factorial&lt;0&gt;::result == 1);
+static_assert(factorial&lt;3&gt;::result == 6);
+static_assert(factorial&lt;5&gt;::result == 120);
+</code></pre>
+<hr />
+<p>Заимствования:</p>
+<p><a href="https://github.com/lejabque/cpp-notes/blob/master/src/11_templates.md">cpp-notes/11_templates.md at master · lejabque/cpp-notes (github.com)</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="09. inheritance%2C virtual%2C cast.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="11. variadic templates.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="09. inheritance%2C virtual%2C cast.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="11. variadic templates.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
