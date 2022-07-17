@@ -167,18 +167,18 @@ int main() {
 </code></pre>
 <h2 id="Псевдонимы-пространств-имен"><a class="header" href="#Псевдонимы-пространств-имен">Псевдонимы пространств имен</a></h2>
 <p>Синтаксис:</p>
-<p><strong>namespace</strong> <em>alias_name</em> = <em>ns_name</em>;
-<strong>namespace</strong> <em>alias_name</em> = ::<em>ns_name</em>;
-<strong>namespace</strong> <em>alias_name</em> = <em>nested_name</em>::<em>ns_name</em>;</p>
+<p><strong>namespace</strong> <em>alias_name</em> = <em>ns_name</em>
+<strong>namespace</strong> <em>alias_name</em> = ::<em>ns_name</em>
+<strong>namespace</strong> <em>alias_name</em> = <em>nested_name</em>::<em>ns_name</em></p>
 <p>Псевдоним <em>alias_name</em> будет виден в том блоке, в котором он объявлен.</p>
 <h2 id="using-директива"><a class="header" href="#using-директива">Using-директива</a></h2>
 <p>Синтаксис:</p>
-<p><strong>using namespace</strong> <em>ns_name</em>;</p>
-<p>С точки зрения неквалифицированного поиска имен любой символ после using-директивы и до конца блока ее объявления каждый символ, объявленный в <em>ns_name</em>, будет виден, как если бы он был объявлен в ближайшем пространстве имен, которое одновременно содержит как using-директиву, так и <em>ns-name</em>.</p>
-<h2 id="using-declaration"><a class="header" href="#using-declaration">Using-declaration</a></h2>
+<p><strong>using namespace</strong> <em>ns_name</em></p>
+<p>С точки зрения неквалифицированного поиска имен любой символ, объявленный в <em>ns_name</em>, после using-директивы и до конца блока ее объявления будет виден, как если бы он был объявлен в ближайшем пространстве имен, которое одновременно содержит как using-директиву, так и <em>ns-name</em>.</p>
+<h2 id="using-объявление"><a class="header" href="#using-объявление">Using-объявление</a></h2>
 <p>Синтаксис:</p>
-<p><strong>using</strong> <em>ns_name</em>::<em>member_name</em>;</p>
-<p>Делает символ <em>member-name</em> из пространства имен <em>ns-name</em> доступным для неквалифицированного поиска, как если бы он был объявлен в том же классе, блоке или пространстве имен, в котором using-declaration появляется.</p>
+<p><strong>using</strong> <em>ns_name</em>::<em>member_name</em></p>
+<p>Делает символ <em>member-name</em> из пространства имен <em>ns-name</em> доступным для неквалифицированного поиска, как если бы он был объявлен в том же классе, блоке или пространстве имен, в котором using-объявление появляется.</p>
 <h2 id="Анонимные-пространства-имен"><a class="header" href="#Анонимные-пространства-имен">Анонимные пространства имен</a></h2>
 <p>Синтаксис:</p>
 <p><strong>namespace</strong> { <code>namespace-body</code> }</p>
@@ -200,6 +200,7 @@ namespace A {
 }
  
 using namespace A; // introduces all names from A into global namespace
+
 void h() {
     i++;    // error: ::(unique)::i and ::A::(unique)::i are both in scope
     A::i++; // ok, increments ::A::(unique)::i
@@ -207,7 +208,7 @@ void h() {
 }
 
 </code></pre>
-<p>Символы внутри анонимных пространств имен (так же как и любые символы, объявленные внутри именованных пространств внутри других анонимных) имеют внутреннее связывание.</p>
+<p>Символы внутри анонимных пространств имен (так же как и любые символы, объявленные внутри именованных пространств внутри других анонимных) имеют внутреннее связывание, как если бы им приписали <code>static</code>.</p>
 <h2 id="adl-argument-dependent-lookup"><a class="header" href="#adl-argument-dependent-lookup">ADL (Argument-dependent lookup)</a></h2>
 <p>Позволяет не указывать явно пространство имен функций при вызове, если какие-либо их аргументы объявлены в том же пространстве имен.</p>
 <pre><code class="language-cpp">namespace MyNamespace {
@@ -224,12 +225,11 @@ int main() {
 </code></pre>
 <p>Такой поиск запускается только для имён, у которых имя неквалифицированное.</p>
 <p>Важно знать, что у поиска ADL и обычного нет приоритетов, они запускаются оба и кандидаты из обоих уходят в overload resolution. Обычно они либо оба найдут одно и то же, либо обычный не найдет ничего и возьмется из ADL.</p>
-<p>А что именно произойдет при overload resolution - надо подумать.</p>
-<p>Еще есть такой tricky пример кода:</p>
+<p>Но есть такой tricky пример кода:</p>
 <pre><code class="language-cpp">using std::swap;
 swap(obj1, obj2);
 </code></pre>
-<p>Если существует пространство имен <code>A</code> и если существуют <code>A::obj1</code>, <code>A::obj2</code> и <code>A::swap()</code>, то произойдет вызов <code>A::swap()</code> вместо вызова <code>std::swap()</code>, чего разработчик иногда может не ожидать.</p>
+<p>Если существует пространство имен <code>A</code> и если существуют <code>A::obj1</code>, <code>A::obj2</code> и <code>A::swap()</code>, то произойдет вызов <code>A::swap()</code> вместо вызова <code>std::swap()</code>, чего разработчик иногда может не ожидать. <em>todo: с чем связано?</em></p>
 <hr />
 <p>Заимствования:</p>
 <p><a href="https://en.cppreference.com/w/cpp/language/adl">Argument-dependent lookup - cppreference.com</a></p>

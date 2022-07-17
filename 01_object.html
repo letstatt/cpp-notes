@@ -163,9 +163,8 @@
 <p>Размер любого полного (<code>complete</code>) объекта должен быть больше нуля.</p>
 <pre><code class="language-cpp">struct empty {};
 
-int main() {
-    std::cout &lt;&lt; sizeof(empty) &lt;&lt; std::endl; // output: 1
-}
+static_assert(sizeof(empty) &gt; 0);
+static_assert(sizeof(empty) == 1);
 </code></pre>
 
                     </main>
