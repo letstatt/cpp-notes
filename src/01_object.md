@@ -30,8 +30,7 @@
 ```cpp
 struct empty {};
 
-int main() {
-    std::cout << sizeof(empty) << std::endl; // output: 1
-}
+static_assert(sizeof(empty) > 0);
+static_assert(sizeof(empty) == 1);
 ```
 
